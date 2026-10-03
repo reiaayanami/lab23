@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GNU/Linux — опрацювання теми</title>
+  <meta name="description" content="Коротко про GNU/Linux, популярні дистрибутиви, команди CLI та BASH-скрипт авторизації.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap&subset=cyrillic" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="bar">
+    <div class="brand">Тема: GNU/Linux</div>
+    <nav aria-label="Навігація по сторінці">
+      <a href="#about">Про ОС</a>
+      <a href="#distros">Дистрибутиви</a>
+      <a href="#commands">Команди CLI</a>
+      <a href="#script">BASH-скрипт</a>
+      <a href="#sources">Джерела</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div>
+    <h1>GNU/Linux: вільна ОС, яка працює скрізь</h1>
+    <p>Від серверів і смартфонів до суперкомп’ютерів і Raspberry Pi. На цій сторінці — короткий огляд системи, популярні дистрибутиви, основні команди термінала та скрипт, що імітує вхід у систему.</p>
+  </div>
+
+  <div class="terminal" role="img" aria-label="Приклад сеансу в терміналі Linux">
+    <div class="terminal-bar"><i></i><i></i><i></i><span>student@linux: ~</span></div>
+<pre><span class="p">student@linux:~$</span> uname -sr
+<span class="ok">Linux 6.8.0</span>
+<span class="p">student@linux:~$</span> pwd
+<span class="ok">/home/student</span>
+<span class="p">student@linux:~$</span> ls
+<span class="ok">Documents  Downloads  lab1  login.sh</span>
+<span class="p">student@linux:~$</span> <span class="cursor"></span></pre>
+  </div>
+</div>
+
+<main>
+
+<!-- ============ 1. Про ОС ============ -->
+<section id="about">
+  <h2>Коротко про GNU/Linux</h2>
+  <p class="lead">GNU/Linux — це сімейство вільних операційних систем, які поєднують ядро Linux із системними утилітами та бібліотеками проєкту GNU.</p>
+  <p>Ядро Linux у 1991 році створив фінський студент Лінус Торвальдс. Проєкт GNU, започаткований Річардом Столменом у 1983 році, на той час уже мав компілятор, командну оболонку та інші інструменти, але не мав власного ядра. Разом вони утворили повноцінну систему. Код поширюється за ліцензією GPL, тому його можна вільно запускати, вивчати, змінювати й розповсюджувати.</p>
+  <p>Ядро відповідає за пам’ять, процеси та пристрої. Користувач взаємодіє із системою через графічне середовище (GNOME, KDE Plasma, Xfce) або через термінал і командну оболонку, найчастіше — Bash.</p>
+
+  <dl class="facts">
+    <div><dt>Ядро</dt><dd>Linux, перший реліз — 1991 рік</dd></div>
+    <div><dt>Ліцензія</dt><dd>GPL та інші вільні ліцензії</dd></div>
+    <div><dt>Застосування</dt><dd>Сервери, хмара, Android, вбудовані системи, суперкомп’ютери, робочі станції</dd></div>
+    <div><dt>Оболонка</dt><dd>Bash — типова командна оболонка в більшості дистрибутивів</dd></div>
+  </dl>
+</section>
+
+<!-- ============ 2. Дистрибутиви ============ -->
+<section id="distros">
+  <h2>Найпопулярніші дистрибутиви</h2>
+  <p>Дистрибутив — це готовий набір: ядро, програми, менеджер пакетів і налаштування. Вони відрізняються філософією, частотою оновлень і складністю.</p>
+
+  <div class="table-wrap">
+    <table>
+      <caption>Огляд поширених дистрибутивів</caption>
+      <thead>
+        <tr><th scope="col">Дистрибутив</th><th scope="col">Основа</th><th scope="col">Менеджер пакетів</th><th scope="col">Для кого</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Ubuntu</td><td>Debian</td><td><code>apt</code></td><td>Початківці, десктопи, сервери та хмара</td></tr>
+        <tr><td>Debian</td><td>Незалежний</td><td><code>apt</code></td><td>Стабільні сервери, база для багатьох інших систем</td></tr>
+        <tr><td>Linux Mint</td><td>Ubuntu</td><td><code>apt</code></td><td>Перехід із Windows, зрозумілий інтерфейс</td></tr>
+        <tr><td>Fedora</td><td>Незалежний (спільнота Red Hat)</td><td><code>dnf</code></td><td>Свіжі технології, розробники</td></tr>
+        <tr><td>Red Hat Enterprise Linux</td><td>Fedora / CentOS Stream</td><td><code>dnf</code></td><td>Корпоративні сервери з комерційною підтримкою</td></tr>
+        <tr><td>Arch Linux</td><td>Незалежний</td><td><code>pacman</code></td><td>Досвідчені користувачі, ручне налаштування</td></tr>
+        <tr><td>openSUSE</td><td>Незалежний</td><td><code>zypper</code></td><td>Десктопи та сервери, інструмент YaST</td></tr>
+        <tr><td>Kali Linux</td><td>Debian</td><td><code>apt</code></td><td>Тестування безпеки</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Актуальний рейтинг популярності можна переглянути на <a href="https://distrowatch.com/" target="_blank" rel="noopener">DistroWatch</a>.</p>
+</section>
+
+<!-- ============ 3. Команди ============ -->
+<section id="commands">
+  <h2>Приклади команд у Linux CLI</h2>
+  <p>Нижче — десять базових команд. Рядок, що починається з <code>$</code>, вводить користувач, решта — відповідь системи.</p>
+
+  <div class="cmd-list">
+
+    <article class="cmd">
+      <h3>pwd<small>print working directory</small></h3>
+      <div>
+        <p>Показує повний шлях до поточного каталогу.</p>
+<pre class="code">$ pwd
+/home/student</pre>
+      </div>
+    </article>
+
+    <article class="cmd">
+      <h3>echo<small>вивід тексту</small></h3>
+      <div>
+        <p>Виводить рядок або значення змінної. Разом із <code>&gt;</code> записує текст у файл.</p>
+<pre class="code">$ echo "Привіт, Linux!"
+Привіт, Linux!
+$ echo $HOME
+/home/student
+$ echo "перший рядок" &gt; note.txt</pre>
+      </div>
+    </article>
+
+    <article class="cmd">
+      <h3>ls<small>list</small></h3>
+      <div>
+        <p>Показує вміст каталогу. Корисні ключі: <code>-l</code> — докладний список, <code>-a</code> — разом із прихованими файлами, <code>-h</code> — розміри у зручному вигляді.</p>
+<pre class="code">$ ls
+Documents  Downloads  note.txt
+$ ls -lah
+drwxr-xr-x 5 student student 4.0K Oct  3 10:12 .
+-rw-r--r-- 1 student student   26 Oct  3 10:14 note.txt</pre>
+      </div>
+    </article>
+
+    <article class="cmd">
+      <h3>cd<small>change directory</small></h3>
+      <div>
+        <p>Переходить в інший каталог. <code>..</code> — на рівень вище, <code>~</code> — домашній каталог, <code>-</code> — назад у попередній.</p>
+<pre class="code">$ cd Documents
+$ pwd
+/home/student/Documents
+$ cd ..
+$ cd ~</pre>
+      </div>
+    </article>
+
+    <article class="cmd">
+      <h3>touch<small>створити файл</small></h3>
+      <div>
+        <p>Створює порожній файл або оновлює час зміни наявного.</p>
+<pre class="code">$ touch report.txt
+$ ls
+report.txt</pre>
+      </div>
+    </article>
+
+    <article class="cmd">
+      <h3>mkdir<small>make directory</small></h3>
+      <div>
+        <p>Створює каталог. Ключ <code>-p</code> створює вкладені каталоги за один раз.</p>
+<pre class="code">$ mkdir lab1
+$ mkdir -p projects/linux/scripts</pre>
+      </div>
+    </article>
+
+    <article class="cmd">
+      <h3>cp<small>copy</small></h3>
+      <div>
+        <p>Копіює файли. Для каталогів потрібен ключ <code>-r</code>.</p>
+<pre class="code">$ cp report.txt report_backup.txt
+$ cp -r lab1 lab1_copy</pre>
+      </div>
+    </article>
+
+    <article class="cmd">
+      <h3>mv<small>move / rename</small></h3>
+      <div>
+        <p>Переміщує файл або перейменовує його.</p>
+<pre class="code">$ mv report.txt final.txt
+$ mv final.txt lab1/</pre>
+      </div>
+    </article>
+
+    <article class="cmd">
+      <h3>rm<small>remove</small></h3>
+      <div>
+        <p>Видаляє файли. Ключ <code>-r</code> видаляє каталоги, <code>-i</code> просить підтвердження перед кожним видаленням.</p>
+<pre class="code">$ rm report_backup.txt
+$ rm -ri lab1_copy
+rm: descend into directory 'lab1_copy'? y</pre>
+      </div>
+    </article>
+
+    <article class="cmd">
+      <h3>history<small>історія команд</small></h3>
+      <div>
+        <p>Показує список раніше введених команд. Команду за номером можна повторити через <code>!номер</code>.</p>
+<pre class="code">$ history | tail -3
+  101  mkdir lab1
+  102  cp -r lab1 lab1_copy
+  103  history | tail -3
+$ !101</pre>
+      </div>
+    </article>
+
+  </div>
+
+  <p class="note"><strong>Обережно з rm.</strong> У Linux немає кошика для видалених через термінал файлів. Перед командою <code>rm -r</code> перевіряйте шлях через <code>pwd</code> та <code>ls</code>.</p>
+</section>
+
+<!-- ============ 4. Скрипт ============ -->
+<section id="script">
+  <h2>BASH-скрипт: імітація авторизації</h2>
+  <p>Скрипт має запитати ім’я користувача й пароль, приховати введення пароля, дати три спроби та повідомити про результат.</p>
+
+<pre class="code">#!/bin/bash
+# login.sh — імітація авторизації в системі у текстовому режимі
+
+VALID_USER="student"
+VALID_PASS="linux123"
+MAX_TRIES=3
+
+clear
+echo "GNU/Linux $(uname -r) $(hostname) tty1"
+echo
+
+for ((try = 1; try &lt;= MAX_TRIES; try++)); do
+    read -p "$(hostname) login: " username
+    read -s -p "Password: " password
+    echo
+
+    if [[ "$username" == "$VALID_USER" &amp;&amp; "$password" == "$VALID_PASS" ]]; then
+        echo
+        echo "Last login: $(date '+%a %b %d %H:%M:%S %Y') on tty1"
+        echo "Welcome, $username! Авторизацію виконано успішно."
+        exit 0
+    fi
+
+    sleep 1
+    echo "Login incorrect"
+    echo
+done
+
+echo "Забагато невдалих спроб. Сеанс завершено."
+exit 1</pre>
+
+  <details>
+    <summary>Як працює скрипт</summary>
+    <div class="body">
+      <ul>
+        <li><code>read -p</code> виводить запрошення та зчитує введений рядок у змінну.</li>
+        <li><code>read -s</code> не показує символи під час введення, як у справжньому терміналі.</li>
+        <li>Цикл <code>for</code> обмежує кількість спроб значенням <code>MAX_TRIES</code>.</li>
+        <li>Умова <code>[[ ... &amp;&amp; ... ]]</code> перевіряє одночасно ім’я та пароль.</li>
+        <li><code>exit 0</code> завершує скрипт після успішного входу, <code>exit 1</code> — після невдалих спроб.</li>
+      </ul>
+      <p><strong>Запуск:</strong></p>
+<pre class="code">$ chmod +x login.sh
+$ ./login.sh</pre>
+      <p>Файл скрипта також можна завантажити: <a href="login.sh" download>login.sh</a>. Дані для входу в прикладі: <code>student</code> / <code>linux123</code>.</p>
+    </div>
+  </details>
+</section>
+
+<!-- ============ 5. Джерела ============ -->
+<section id="sources">
+  <h2>Джерела інформації</h2>
+  <ul class="sources">
+    <li><a href="https://www.kernel.org/" target="_blank" rel="noopener">The Linux Kernel Archives</a> <span>— офіційний сайт ядра Linux</span></li>
+    <li><a href="https://www.gnu.org/gnu/linux-and-gnu.html" target="_blank" rel="noopener">GNU Project: Linux and the GNU System</a> <span>— про зв’язок GNU та Linux</span></li>
+    <li><a href="https://uk.wikipedia.org/wiki/Linux" target="_blank" rel="noopener">Вікіпедія: Linux</a> <span>— історія та загальний опис</span></li>
+    <li><a href="https://distrowatch.com/" target="_blank" rel="noopener">DistroWatch</a> <span>— каталог і рейтинг дистрибутивів</span></li>
+    <li><a href="https://ubuntu.com/" target="_blank" rel="noopener">Ubuntu</a>, <a href="https://www.debian.org/" target="_blank" rel="noopener">Debian</a>, <a href="https://fedoraproject.org/" target="_blank" rel="noopener">Fedora</a>, <a href="https://archlinux.org/" target="_blank" rel="noopener">Arch Linux</a> <span>— сайти дистрибутивів</span></li>
+    <li><a href="https://www.gnu.org/software/bash/manual/" target="_blank" rel="noopener">GNU Bash Reference Manual</a> <span>— довідник з Bash</span></li>
+    <li><a href="https://man7.org/linux/man-pages/" target="_blank" rel="noopener">Linux man pages</a> <span>— опис усіх команд</span></li>
+    <li><a href="https://linuxjourney.com/" target="_blank" rel="noopener">Linux Journey</a> <span>— покроковий вступний курс</span></li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  Лабораторна робота: опрацювання теми Linux. Сторінку створено за допомогою HTML та CSS.
+</footer>
+
+</body>
+</html>
